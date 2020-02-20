@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="error" type="java.lang.String"*/-->
+<!--/*@thymesVar id="timestamp" type="java.lang.String"*/-->
+<!--/*@thymesVar id="path" type="java.lang.String"*/-->
+<!--/*@thymesVar id="status" type="java.lang.Integer"*/-->
+<!--/*@thymesVar id="message" type="java.lang.String"*/-->
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/normalize.css}" href="../static/css/normalize.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/main.css}" href="../static/css/main.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/error.css}" href="../static/css/error.css" rel="stylesheet" type="text/css"/>
+    <title>Error</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link th:href="@{css/styles.css}" href="../static/css/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
+</head>
+<body>
+<header>
+    <div th:replace="Index :: HeaderBar">
+        <nav class="navbar navbar-expand-sm navbar-dark navbar-custom">
+            <div class="container">
+                <a class="navbar-brand"  href="Index.html">Book Data</a>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <h1 class="my-4">Student Data Error</h1>
+    </div>
+</header>
+<main>
+
+    <h2>Error: <span th:text="${error}">Not Found</span></h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <td th:text="${timestamp}">Sun Feb 10 11:52:33 EST 2019</td>
+        </tr>
+        <tr>
+            <th>Path</th>
+            <td th:text="${path}">/blah/balh/balh</td>
+        </tr>
+        <tr>
+            <th>Error</th>
+            <td th:text="${error}">Not Found</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td th:text="${status}">404</td>
+        </tr>
+        <tr>
+            <th>Message</th>
+            <td th:text="${message}">No message available</td>
+        </tr>
+    </table>
+    <p><a href="Index.html" th:href="@{/Index.do}">Index</a></p>
+</main>
+</body>
+</html>

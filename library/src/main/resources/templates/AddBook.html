@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="form" type="com.vandan.patel.library.model.BookForm"*/-->
+<!--/*@thymesVar id="languages" type="ca.lang.String[]"*/-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Add Student</title>
+    <link th:href="@{css/normalize.css}" href="../static/css/normalize.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{css/main.css}" href="../static/css/main.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{css/footer.css}" href="../static/css/footer.css" rel="stylesheet" type="text/css"/>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script th:src="@{js/footer.js}" src="../static/js/footer.js"></script>
+    <script th:src="@{js/arrow.js}" src="../static/js/arrow.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link th:href="@{css/styles.css}" href="../static/css/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
+</head>
+<body>
+<header>
+    <div th:replace="Index :: HeaderBar">
+        <nav class="navbar navbar-expand-sm navbar-dark navbar-custom">
+            <div class="container">
+                <a class="navbar-brand"  href="Index.html">Book Data</a>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <h1 class="my-4">Add Book</h1>
+    </div>
+</header>
+<main>
+
+
+    <form method="post"
+          th:action="@{InsertBook.do}" action="ConfirmInsert.html"
+          th:object="${form}">
+
+
+        <div class="card-body">
+        <p>
+            <label for="title">Book Title:</label>
+            <input id="title" type="text" th:field="*{bookTitle}"/>
+            <span th:if="${#fields.hasErrors('bookTitle')}" th:errors="*{bookTitle}"
+                  class="arrow error">Book Title Error</span>
+        </p>
+        <p>
+            <label for="author">Book Author:</label>
+            <input id="author" type="text" th:field="*{authorName}"/>
+            <span th:if="${#fields.hasErrors('authorName')}" th:errors="*{authorName}"
+                  class="arrow error">Author Name Error</span>
+        </p>
+
+        <p>
+            <label for="date">Publication Date:</label>
+            <input id="date" type="text" th:field="*{publicationDate}"/>
+            <span th:if="${#fields.hasErrors('publicationDate')}" th:errors="*{publicationDate}"
+                  class="arrow error">Publication Date Error</span>
+        </p>
+
+
+        <p>
+            <label for="lang">Language: </label>
+            <select id="lang" th:field="*{language}">
+                <option th:each="l: ${languages}" th:value="${l}" th:text="${l}">--- Select Language ---</option>
+            </select>
+            <span th:if="${#fields.hasErrors('language')}" th:errors="*{language}"
+                  class="arrow error">Language Error</span>
+        </p>
+        <p>
+            <label>Format:</label>
+            <input type="radio" th:field="*{format}" th:value="Paperback" />Paperback
+            <input type="radio" th:field="*{format}" th:value="Hardcover"/>Hardcover
+            <span th:if="${#fields.hasErrors('format')}" th:errors="*{format}"
+                  class="arrow error">Format Error</span>
+        </p>
+        <p>
+            <label>Used or New:</label>
+            <input type="checkbox" th:field="*{usedOrNew}" th:value="yes"/>Used Book
+
+        </p>
+        </div>
+        <p>
+            <label>&nbsp;</label>
+            <input type="reset" value="Clear"/>
+            <input type="submit" value="Send"/>
+        </p>
+    </form>
+    <p><a href="Index.html" th:href="@{Index.do}">Index</a></p>
+    <p><a href="ListBooks.html" th:href="@{ListBooks.do}">List Books</a></p>
+</main>
+
+</body>
+</html>

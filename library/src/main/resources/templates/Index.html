@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tag for Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link th:href="@{css/styles.css}" href="../static/css/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
+    <script th:src="@{js/footer.js}" src="../static/js/footer.js"></script>
+    <title>Index</title>
+</head>
+<body>
+<header>
+    <div th:fragment="HeaderBar">
+        <nav class="navbar navbar-expand-sm navbar-dark navbar-custom">
+            <div class="container">
+                <a class="navbar-brand"  href="Index.html" th:href="@{/Index.do}">Book Data</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Index.html" th:href="@{/Index.do}"><i class="fas fa-home"></i>&nbsp;Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="AddBook.html" th:href="@{/AddBook.do}"><i class="fas fa-plus"></i>&nbsp;Add&nbsp;Book</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ListBooks.html" th:href="@{/ListBooks.do}"><i class="fas fa-th-list"></i></i>&nbsp;List&nbsp;Books</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <h1 class="my-4">Index</h1>
+    </div>
+</header>
+<main role="main" class="container">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a href="AddBook.html" th:href="@{AddBook.do}" class="nav-link"><i class="fas fa-plus"></i>&nbsp;Add Book</a>
+        </li>
+        <li class="nav-item">
+            <a href="ListBooks.html" th:href="@{ListBooks.do}" class="nav-link"><i class="fas fa-th-list"></i></i>&nbsp;List Books</a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+        </li>
+    </ul>
+</main>
+</body>
+</html>

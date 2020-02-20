@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="books" type="java.util.ArrayList<com.vandan.patel.library.model.BookForm>"*/-->
+<!--/*@thymesVar id="s" type="com.vandan.patel.library.model.BookForm"*/-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tag for Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link th:href="@{css/styles.css}" href="../static/css/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"></script>
+    <script th:src="@{js/footer.js}" src="../static/js/footer.js"></script>
+    <title>List All</title>
+</head>
+<body>
+<header>
+    <div th:replace="Index :: HeaderBar">
+        <nav class="navbar navbar-expand-sm navbar-dark navbar-custom">
+            <div class="container">
+                <a class="navbar-brand"  href="Index.html">Book Data</a>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <h1 class="my-4">Book List</h1>
+    </div>
+</header>
+<main role="main" class="container">
+    <table th:unless="${#lists.isEmpty(books)}" class="table table-bordered table-striped mb-4">
+        <thead>
+        <tr class="table-primary">
+            <th scope="col">Count</th>
+            <th scope="col">Book Title</th>
+            <th scope="col">Book Author</th>
+            <th scope="col">Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="s,c: ${books}">
+            <th th:text="${c.count}" class="align-middle" scope="row">1</th>
+            <td th:text="${s.bookTitle}" class="align-middle">Bart</td>
+            <td th:text="${s.authorName}" class="align-middle">Simpson</td>
+            <td>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a href="BookDetails.html" th:href="@{BookDetails.do(id=${s.id})}" class="nav-link"><i class="fas fa-info-circle"></i>&nbsp;Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="EditBook.html" th:href="@{EditBook.do(id=${s.id})}" class="nav-link"><i class="fas fa-edit"></i>&nbsp;Edit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="DeleteBook.html" th:href="@{DeleteBook.do(id=${s.id})}" class="nav-link"><i class="fas fa-trash-alt"></i>&nbsp;Delete</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="alert alert-info message" th:if="${#lists.isEmpty(books)}">No Book data</p>
+    <p><a href="ListBooks.html" th:href="@{DeleteAll.do}" class="btn btn-danger mt-2"><i class="fas fa-trash-alt"></i>&nbsp;Delete All</a></a></p>
+</main>
+</body>
+</html>
